@@ -32,7 +32,8 @@ public class SecurityConfig {
                         .requestMatchers("/login").permitAll()
                         .requestMatchers("/register").permitAll()
                         .requestMatchers("/Marque").permitAll()
-                        .requestMatchers("/Marque/{id}").permitAll())
+                        .requestMatchers("/Marque/{id}").permitAll()
+                        .requestMatchers("/voiture/VoitureMar/{idMar}").permitAll())
 
 
 

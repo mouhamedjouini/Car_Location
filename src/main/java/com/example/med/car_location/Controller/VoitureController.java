@@ -60,5 +60,10 @@ public class VoitureController {
             voitureService.deleteVoitureById(id);
             return new ResponseEntity<String>("voiture deleted successfully!.", HttpStatus.OK);
         }
+    @RequestMapping(value="/VoitureMar/{idMar}",method = RequestMethod.GET)
+    public List<Voiture> getVoitureByMarId(@PathVariable("idMar") Long idMar) {
+        return voitureService.findByMarqueIdMar(idMar);
     }
+
+}
 

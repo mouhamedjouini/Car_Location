@@ -1,6 +1,7 @@
 package com.example.med.car_location.service;
 
 import com.example.med.car_location.Repository.VoitureRepository;
+import com.example.med.car_location.entities.Marque;
 import com.example.med.car_location.entities.Voiture;
 import com.example.med.car_location.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,4 +58,41 @@ public class VoitureServiceImpl implements VoitureService{
     public List<Voiture> getAllVoiture() {
         return voitureRepository.findAll();
     }
+
+    @Override
+    public List<Voiture> findByNomVoiture(String nom) {
+        return voitureRepository.findByNomVoiture(nom);
+    }
+
+    @Override
+    public List<Voiture> findByNomVoitureContains(String nom) {
+        return voitureRepository.findByNomVoitureContains(nom);
+    }
+
+    @Override
+    public List<Voiture> findByNomPrix(String nom, Double prix) {
+        return voitureRepository.findByNomPrix(nom,prix);
+    }
+
+    @Override
+    public List<Voiture> findByMarque(Marque marque) {
+        return voitureRepository.findByMarque(marque);
+    }
+
+    @Override
+    public List<Voiture> findByMarqueIdMar(Long id) {
+        return voitureRepository.findByMarqueIdMar(id);
+    }
+
+    @Override
+    public List<Voiture> findByOrderByNomVoitureAsc() {
+        return voitureRepository.findByOrderByNomVoitureAsc();
+    }
+
+    @Override
+    public List<Voiture> trierVoitureNomsPrix() {
+        return voitureRepository.trierVoitureNomsPrix();
+    }
+
+
 }
