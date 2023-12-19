@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+@CrossOrigin
 @RestController
 @RequestMapping("/voiture")
 public class VoitureController {
@@ -51,7 +52,12 @@ public class VoitureController {
                     ResponseEntity<Voiture>(voitureService.updateVoiture(voiture,id),
                     HttpStatus.OK);
         }
-        // build delete employee REST API
+    @RequestMapping(method = RequestMethod.PUT)
+    public Voiture updateProduit(@RequestBody Voiture voiture) {
+        return voitureService.updateVoiture(voiture);
+    }
+
+    // build delete employee REST API
 
         @DeleteMapping("{id}")
         public ResponseEntity<String> deleteVoiture(@PathVariable("id") long

@@ -8,7 +8,7 @@ import java.util.List;
 public interface VoitureService {
     Voiture saveVoiture(Voiture v);
     Voiture updateVoiture(Voiture v,long id);
-
+    Voiture updateVoiture(Voiture v);
     void deleteVoitureById(long id);
     Voiture getVoitureById(long id);
     List<Voiture> getAllVoiture();

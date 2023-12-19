@@ -8,7 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+@CrossOrigin
 @RestController
 @RequestMapping("/Marque")
 public class MarqueController {
@@ -50,6 +50,7 @@ public class MarqueController {
                 ResponseEntity<Marque>(marqueService.updateMarque(marque,id),
                 HttpStatus.OK);
     }
+
     // build delete employee REST API
 
     @DeleteMapping("{id}")

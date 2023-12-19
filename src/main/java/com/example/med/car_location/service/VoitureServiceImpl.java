@@ -22,7 +22,10 @@ public class VoitureServiceImpl implements VoitureService{
     public Voiture saveVoiture(Voiture v) {
         return voitureRepository.save(v);
     }
-
+    @Override
+    public Voiture updateVoiture(Voiture p) {
+        return voitureRepository.save(p);
+    }
     @Override
     public Voiture updateVoiture(Voiture v, long id) {
         Voiture existingVoiture =

@@ -28,7 +28,7 @@ public class JWTAuthorizationFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {
         String jwt =request.getHeader("Authorization");
-
+        System.out.println(jwt);
         if (jwt==null || !jwt.startsWith("Bearer "))
         {
             filterChain.doFilter(request, response);
@@ -36,6 +36,7 @@ public class JWTAuthorizationFilter extends OncePerRequestFilter {
         }
 
         JWTVerifier verifier = JWT.require(Algorithm.HMAC256(SecParams.SECRET)).build();
+        response.addHeader("Authorization", jwt);
         //enlever le préfixe Bearer du  jwt
         jwt= jwt.substring(7); // 7 caractères dans "Bearer "
 

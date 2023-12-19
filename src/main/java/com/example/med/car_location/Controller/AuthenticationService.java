@@ -6,6 +6,7 @@ import com.example.med.car_location.Repository.UserRepository;
 import com.example.med.car_location.dto.AuthenticationRequest;
 import com.example.med.car_location.dto.AuthenticationResponse;
 import com.example.med.car_location.entities.User;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -26,7 +27,7 @@ public class AuthenticationService {
 
 
 
-    public AuthenticationResponse authenticate(AuthenticationRequest request) {
+    public AuthenticationResponse authenticate(AuthenticationRequest request, HttpServletResponse response) {
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword()));
 
         User user = userRepository.findByUsername(request.getUsername());
@@ -42,8 +43,9 @@ public class AuthenticationService {
                 withArrayClaim("roles", roles.toArray(new String[roles.size()])).
                 withExpiresAt(new Date(System.currentTimeMillis()+SecParams.EXP_TIME)).
                 sign(Algorithm.HMAC256(SecParams.SECRET));
+        response.addHeader("Authorization", jwt);
 
-        System.out.println("JWT "+jwt);
+
         return AuthenticationResponse.builder()
                 .token(jwt)
                 .username(user.getUsername())
