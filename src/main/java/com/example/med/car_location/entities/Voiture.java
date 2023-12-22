@@ -25,6 +25,8 @@ public class Voiture {
     private String serie;
     @Column(name = "dateMiseEnCirculation")
     private LocalDate dateMiseEnCirculation;
+    @OneToOne
+    private Image image;
     @ManyToOne
     private Marque marque;
 

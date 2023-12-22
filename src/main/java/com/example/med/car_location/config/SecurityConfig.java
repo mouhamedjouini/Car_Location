@@ -76,6 +76,8 @@ public class SecurityConfig {
                         .requestMatchers("/Marque/{id}").permitAll()
                         .requestMatchers("/verifyEmail/{token}").permitAll()
                         .requestMatchers("/swagger-ui/index.html").permitAll()
+                        .requestMatchers("/api/image/upload").permitAll()
+                        .requestMatchers("/api/image/load/{id}").permitAll()
                         .requestMatchers("/voiture/VoitureMar/{idMar}").permitAll())
 
 
