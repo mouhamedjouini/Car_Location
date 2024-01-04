@@ -5,8 +5,8 @@ import com.example.med.car_location.service.CommentaireService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-
 import java.util.List;
+
 
 @RestController
 @RequestMapping("/api/commentaires")
@@ -20,7 +20,7 @@ public class CommentaireController {
         return commentaireService.getAllCommentaires();
     }
 
-    @GetMapping("/commentaires/{id}")
+    @GetMapping("/{id}")
     public Commentaire getCommentaireById(@PathVariable Long id) {
         return commentaireService.getCommentaireById(id);
     }
@@ -30,7 +30,7 @@ public class CommentaireController {
         commentaireService.saveCommentaire(commentaire);
     }
 
-    @PutMapping("/commentaires/{id}")
+    @PutMapping("/{id}")
     public void updateCommentaire(@PathVariable Long id, @RequestBody Commentaire updatedCommentaire) {
         Commentaire existingCommentaire = commentaireService.getCommentaireById(id);
         if (existingCommentaire != null) {
@@ -40,9 +40,8 @@ public class CommentaireController {
         }
     }
 
-    @DeleteMapping("/commentaires/{id}")
+    @DeleteMapping("/{id}")
     public void deleteCommentaire(@PathVariable Long id) {
         commentaireService.deleteCommentaire(id);
     }
 }
-

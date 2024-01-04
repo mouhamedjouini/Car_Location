@@ -1,12 +1,13 @@
 package com.example.med.car_location.Controller;
 
+
 import com.example.med.car_location.entities.Avis;
 import com.example.med.car_location.service.AvisService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-
 import java.util.List;
+
 
 @RestController
 @RequestMapping("/api/avis")
@@ -20,7 +21,7 @@ public class AvisController {
         return avisService.getAllAvis();
     }
 
-    @GetMapping("/avis/{id}")
+    @GetMapping("/{id}")
     public Avis getAvisById(@PathVariable Long id) {
         return avisService.getAvisById(id);
     }
@@ -30,7 +31,7 @@ public class AvisController {
         avisService.saveAvis(avis);
     }
 
-    @PutMapping("/avis/{id}")
+    @PutMapping("/{id}")
     public void updateAvis(@PathVariable Long id, @RequestBody Avis updatedAvis) {
         Avis existingAvis = avisService.getAvisById(id);
         if (existingAvis != null) {
@@ -41,9 +42,8 @@ public class AvisController {
         }
     }
 
-    @DeleteMapping("/avis/{id}")
+    @DeleteMapping("/{id}")
     public void deleteAvis(@PathVariable Long id) {
         avisService.deleteAvis(id);
     }
 }
-
